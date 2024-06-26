@@ -48,7 +48,9 @@ def read_books(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
 
 
 @app.get("/books/author/{author_id}", response_model=List[BookList])
-def read_books_by_author(author_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+def read_books_by_author(
+    author_id: int, skip: int = 0, limit: int = 10, db: Session = Depends(get_db)
+):
     books = crud.get_books_by_author_id(db, author_id=author_id, skip=skip, limit=limit)
     if not books:
         raise HTTPException(status_code=404, detail="Books not found for this author")

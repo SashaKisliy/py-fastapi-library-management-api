@@ -37,10 +37,3 @@ class AuthorList(AuthorBase):
 
     class Config:
         from_attributes = True
-
-
-
-
-
-
-

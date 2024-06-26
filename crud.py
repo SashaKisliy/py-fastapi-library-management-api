@@ -31,7 +31,13 @@ def get_all_books(db: Session, skip: int = 0, limit: int = 10):
 
 
 def get_books_by_author_id(db: Session, author_id: int, skip: int = 0, limit: int = 10):
-    return db.query(Book).filter(Book.author_id == author_id).offset(skip).limit(limit).all()
+    return (
+        db.query(Book)
+        .filter(Book.author_id == author_id)
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
 
 
 def create_book(db: Session, book: BookCreate):
